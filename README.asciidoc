@@ -1,3 +1,38 @@
-== Fundamental Data Structures and Algorithms in Python.
+////////////////////
+/// Attributions ///
+////////////////////
 :author: Xing Zhou
-:date: 15 June 2013
+:year: 2013
+
+== Fundamental Data Structures and Algorithms in Python.
+Inspired by CMU's http://www.cs.cmu.edu/~211/[15-211: Fundamental Data Structures and Algorithms].
+
+15-211 was one of my first favorite course in computer science.
+Programming in Java, we implemented many of the most common data structures available in the Java standard library.
+Along side the implementation, we also learned different algorithms such as graph and tree traversals.
+
+Unfortunately, after a hiatus from school, I felt that I need a refreshment in both the data structures and algorithms.
+Instead of Java, I've decided to implement the data structures and algorithms in Python, since it's the language that
+I want to have a deep understanding.
+
+While this is a personal project, it is free to anyone to modify, distribute, etc., unless otherwise specified in individual
+file headers.
+
+=== Projects
+
+. Expression Trees
+
+. Snakes
+
+. Compression
+
+. Seam Carving
+
+. Graphs
+
+. Chess
+
+//////////////
+/// Footer ///
+//////////////
+(C) {author} {year}
