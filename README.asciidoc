@@ -1,0 +1,3 @@
+== Fundamental Data Structures and Algorithms in Python.
+:author: Xing Zhou
+:date: 15 June 2013
