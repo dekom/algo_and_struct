@@ -1,4 +1,10 @@
 == Expression Trees Write Up
+Source: 15-211 Assignment
+
+Introduce two high level abstractions involved in an optimizing compiler:
+http://wikipedia.org/wiki/Abstract_syntax_tree[Abstract Syntax Tree]
+and
+http://wikipedia.org/wiki/Constant_Folding[Constant Folding].
 
 === Introducing the Compiler
 As a computer programmer, most of the code you write will somehow be
