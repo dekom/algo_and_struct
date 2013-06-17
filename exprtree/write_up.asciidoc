@@ -1,0 +1,88 @@
+== Expression Trees Write Up
+
+=== Introducing the Compiler
+As a computer programmer, most of the code you write will somehow be
+_compiled_. The CPU of a computer can not directly process source code. While
+humans can (and once did) write in the language of CPUs (known as assembly)
+this language is verbose. A _compiler_ transforms the nicer looking source
+code into the executable assembly code.
+
+One of the first steps in writing a compiler is _parsing_. Parsing takes the
+source code of a program and turns it in to a form which the compiler can
+analyze. A _parser_ will take a statement like +1+x*(y-4)+ and turn it into a
+tree, such as:
+
+....
+[   +   ]
+/       \
+1   [   *   ]
+    /       \
+    x   [   -   ]
+        /       \
+        y       4
+....
+
+This tree is called an _Abstract Syntax Tree_. Note how there is no order of
+operations, nor a need for parentheses. The lack of ambiguity is one of the
+advantages of the abstract syntax tree over the source code syntax.
+
+There are three types of nodes in an abstract syntax tree. A Value Node is a
+node that represents a value such as x or 1. A value like x is called a
+variable while a value like 1 a constant. An Unary node is an operation that
+takes one operand. The most familiar unary operator is unary negation,
+`-(1+2)`. A Binary Node is an operation with two operands such as `+,-,*,/`.
+
+=== Optimization with Constant Folding
+In order to write cleaner code, one often writes expressions like
+`5*60*1000` to represent five minutes in milliseconds. However, if such an
+expression occurred in a statement that was executed a million times,
+carrying out the extra multiplications would waste time. To avoid this
+problem, a compiler implements constant folding. Constant folding is
+implemented by a series of transformation rules that describe how to
+simplify expressions. For example, the subtree
+
+....
+[   +   ]
+/       \
+1       1
+....
+
+constant folds to
+
+....
+[   2   ]
+....
+
+Of course, this extends to more complex, multi-layered trees.  For example,
+
+....
+    [       *       ]
+    /               \
+[   +   ]       [   -   ]
+/       \       /       \
+1   [   /   ]   5       2
+    /       \
+    4       2
+....
+
+becomes
+
+....
+[   9   ]
+....
+
+It is important to note that constant folding is not exclusive to constant
+expressions.  The following example uses the familiar additive identity to
+simplify
+
+....
+[   +   ]
+/       \
+x       0
+....
+
+to
+
+....
+[   x   ]
+....
