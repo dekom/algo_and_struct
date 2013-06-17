@@ -13,11 +13,11 @@ analyze. A _parser_ will take a statement like +1+x*(y-4)+ and turn it into a
 tree, such as:
 
 ....
-[   +   ]
+(   +   )
 /       \
-1   [   *   ]
+1   (   *   )
     /       \
-    x   [   -   ]
+    x   (   -   )
         /       \
         y       4
 ....
@@ -42,7 +42,7 @@ implemented by a series of transformation rules that describe how to
 simplify expressions. For example, the subtree
 
 ....
-[   +   ]
+(   +   )
 /       \
 1       1
 ....
@@ -50,17 +50,17 @@ simplify expressions. For example, the subtree
 constant folds to
 
 ....
-[   2   ]
+(   2   )
 ....
 
 Of course, this extends to more complex, multi-layered trees.  For example,
 
 ....
-    [       *       ]
+    (       *       )
     /               \
-[   +   ]       [   -   ]
+(   +   )       (   -   )
 /       \       /       \
-1   [   /   ]   5       2
+1   (   /   )   5       2
     /       \
     4       2
 ....
@@ -68,7 +68,7 @@ Of course, this extends to more complex, multi-layered trees.  For example,
 becomes
 
 ....
-[   9   ]
+(   9   )
 ....
 
 It is important to note that constant folding is not exclusive to constant
@@ -76,7 +76,7 @@ expressions.  The following example uses the familiar additive identity to
 simplify
 
 ....
-[   +   ]
+(   +   )
 /       \
 x       0
 ....
@@ -84,5 +84,5 @@ x       0
 to
 
 ....
-[   x   ]
+(   x   )
 ....
