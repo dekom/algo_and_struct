@@ -6,6 +6,9 @@ http://wikipedia.org/wiki/Abstract_syntax_tree[Abstract Syntax Tree]
 and
 http://wikipedia.org/wiki/Constant_Folding[Constant Folding].
 
+The operators that needs to be implemented are: unary - *negation* and
+binary - *+*, *-*, *x*, */*.
+
 === Introducing the Compiler
 As a computer programmer, most of the code you write will somehow be
 _compiled_. The CPU of a computer can not directly process source code. While
