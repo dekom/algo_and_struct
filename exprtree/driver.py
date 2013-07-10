@@ -134,9 +134,9 @@ def parse(expr_str):
     print("Output Q", output_q)
 
 def run():
-    expression = input("expr: ")
+    expression = input("eval: ")
     parse(expression)
-    return build_ast()
+    build_ast()
 
 if __name__ == "__main__":
     run()

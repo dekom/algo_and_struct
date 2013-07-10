@@ -7,20 +7,22 @@ class Expression:
         def __init__(self, msg):
             print("Operator Error:", msg)
 
-    ops = "*/+-~"
+    op_precedence = {
+        "~" : 5,
+        "*" : 4,
+        "/" : 4,
+        "+" : 3,
+        "-" : 3
+    }
+
+    ops = op_precedence.keys()
 
     @staticmethod
     def op_is_greater(op1, op2):
-        if op1 == "~":
-            return True
-        elif op1 == "*" or op1 == "/":
-            return op2 != "~"
-        elif op1 == "+" or op1 == "-":
-            return op2 not in "*/~"
-        else:
-            raise Expression.OperatorError("op1: {0}, op2: {1}".format(op1, op2))
+        return Expression.op_precedence[op1] >= Expression.op_precedence[op2]
 
 class ConstantExpression(Expression):
+    """An expression representing a numerical constant"""
     def __init__(self, value):
         assert(isinstance(value, int))
         self.value = value
@@ -40,7 +42,6 @@ class ConstantExpression(Expression):
 class VariableExpression(Expression):
     """Represents a variable such as 'x' and 'y' in 'x+y'"""
     def __init__(self, var):
-        """Create a variable expression, where var is a string representing the variable"""
         assert(isinstance(var, str))
         self.var = var
 
